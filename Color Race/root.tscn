@@ -1,0 +1,292 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://asphalt.tres" type="Material" id=1]
+[ext_resource path="res://root.gd" type="Script" id=2]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="CylinderMesh" id=5]
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="PlaneMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.0859375, 0.0859375, 0.0859375, 1 )
+
+[sub_resource type="PrismMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.0823529, 0.788235, 0.0941176, 1 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="CubeMesh" id=14]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.819608, 0.0509804, 0.0509804, 1 )
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 1, 0.729412, 0.211765, 1 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 1, 0.729412, 0.211765, 1 )
+
+[node name="root" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="light" type="Spatial" parent="."]
+
+[node name="main_light" type="DirectionalLight" parent="light"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.32297, 0 )
+light_energy = 0.0
+
+[node name="bg_light" type="DirectionalLight" parent="light"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.3314, 0 )
+light_energy = 0.0
+
+[node name="lampposts" type="Spatial" parent="."]
+
+[node name="lp_left" type="MeshInstance" parent="lampposts"]
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, -1.4, 2, -4.706 )
+skeleton = NodePath("../../background")
+
+[node name="lp_light" type="SpotLight" parent="lampposts/lp_left"]
+transform = Transform( 0.05, 0, 0, 0, -4.37114e-07, 1, 0, -0.05, -2.18557e-08, 0.036653, 1.91279, 0 )
+light_energy = 4.0
+spot_range = 6.74195
+spot_angle = 15.9185
+
+[node name="lp_light2" type="SpotLight" parent="lampposts/lp_left"]
+transform = Transform( 0.05, 0, 0, 0, -4.37114e-07, 1, 0, -0.05, -2.18557e-08, -0.0421472, 1.91279, 0 )
+light_energy = 4.0
+spot_range = 6.74195
+spot_angle = 15.9185
+
+[node name="lp_top" type="MeshInstance" parent="lampposts/lp_left"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.007, 0, 2, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="lp_body" type="MeshInstance" parent="lampposts/lp_left"]
+transform = Transform( 0.005, 0, 0, 0, 2, 0, 0, 0, 0.005, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="lp_right" type="MeshInstance" parent="lampposts"]
+transform = Transform( -20, 0, -1.74846e-06, 0, 1, 0, 1.74846e-06, 0, -20, 1.4, 2, 4.6 )
+skeleton = NodePath("../../background")
+
+[node name="lp_light" type="SpotLight" parent="lampposts/lp_right"]
+transform = Transform( 0.05, 0, 0, 0, -4.37114e-07, 1, 0, -0.05, -2.18557e-08, 0.036653, 1.91279, 0 )
+light_energy = 4.0
+spot_range = 6.74195
+spot_angle = 15.9185
+
+[node name="lp_light2" type="SpotLight" parent="lampposts/lp_right"]
+transform = Transform( 0.05, 0, 2.11758e-22, 0, -4.37114e-07, 1, 0, -0.05, -2.18557e-08, -0.0402525, 1.91279, 0 )
+light_energy = 4.0
+spot_range = 6.74195
+spot_angle = 15.9185
+
+[node name="lp_top" type="MeshInstance" parent="lampposts/lp_right"]
+transform = Transform( 0.05, 0, -1.66533e-16, 0, 0.05, 0, 0, 0, 0.007, 0, 1.993, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="lp_body" type="MeshInstance" parent="lampposts/lp_right"]
+transform = Transform( 0.005, 0, 0, 0, 2, 0, 0, 0, 0.005, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="color_parts" type="Spatial" parent="."]
+
+[node name="color_line" type="MeshInstance" parent="color_parts"]
+transform = Transform( 3.8, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.01, -11 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="block1" type="MeshInstance" parent="color_parts"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 1, -2.8, 0.01, -14 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="block2" type="MeshInstance" parent="color_parts"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.01, -14 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="block3" type="MeshInstance" parent="color_parts"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 1, 2.8, 0.01, -14 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="roads" type="Spatial" parent="."]
+
+[node name="road1" type="MeshInstance" parent="roads"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 10, -2.8, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = ExtResource( 1 )
+
+[node name="road2" type="MeshInstance" parent="roads"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = ExtResource( 1 )
+
+[node name="road3" type="MeshInstance" parent="roads"]
+transform = Transform( 1, 0, 0, 0, 0.1, 0, 0, 0, 10, 2.8, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = ExtResource( 1 )
+
+[node name="car" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5 )
+
+[node name="body" type="MeshInstance" parent="car"]
+transform = Transform( 0.4, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0.490366, 0 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="wheels1" type="MeshInstance" parent="car"]
+transform = Transform( -8.74228e-09, 0.5, 0, -0.2, -2.18557e-08, 0, 0, 0, 0.2, 0, 0.3, -0.627091 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="wheels2" type="MeshInstance" parent="car"]
+transform = Transform( -8.74228e-09, 0.5, 0, -0.2, -2.18557e-08, 0, 0, 0, 0.2, 0, 0.3, 0.652215 )
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="light1" type="SpotLight" parent="car"]
+transform = Transform( 1, 0, 0, 0, 0.996414, 0.084617, 0, -0.084617, 0.996414, -0.253368, 0.445417, 0.821723 )
+light_energy = 16.0
+spot_range = 5.80022
+spot_angle = 6.39147
+
+[node name="light2" type="SpotLight" parent="car"]
+transform = Transform( 1, 0, 0, 0, 0.996414, 0.084617, 0, -0.084617, 0.996414, 0.293645, 0.445417, 0.821723 )
+light_energy = 16.0
+spot_range = 5.80022
+spot_angle = 6.39147
+
+[node name="lines" type="Spatial" parent="."]
+
+[node name="line1_1" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, -3.7, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="line1_2" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, -1.9, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="line2_1" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, -0.9, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="line2_2" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, 0.9, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="line3_1" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, 1.9, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="line3_2" type="MeshInstance" parent="lines"]
+transform = Transform( 0.03, 0, 0, 0, 0.1, 0, 0, 0, 10, 3.7, 0.02, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="health" type="Spatial" parent="."]
+
+[node name="health1" type="SpotLight" parent="health"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 1.12997, -5 )
+light_color = Color( 0.160784, 0.92549, 0, 1 )
+light_energy = 16.0
+spot_angle = 40.2083
+
+[node name="health2" type="SpotLight" parent="health"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.12997, -5 )
+light_color = Color( 0.160784, 0.92549, 0, 1 )
+light_energy = 16.0
+spot_angle = 40.2083
+
+[node name="health3" type="SpotLight" parent="health"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 1.12997, -5 )
+light_color = Color( 0.160784, 0.92549, 0, 1 )
+light_energy = 16.0
+spot_angle = 40.2083
+
+[node name="background" type="MeshInstance" parent="."]
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, -0.00994039, -0.98815, 0.0241189 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 11 )
+
+[node name="camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13, 0 )
+fov = 69.0
+
+[node name="menu" type="Spatial" parent="."]
+
+[node name="play" type="MeshInstance" parent="menu"]
+transform = Transform( -4.37114e-08, 1, 8.74228e-09, 0, -4.37114e-08, 0.2, 1, 4.37114e-08, 3.82137e-16, 0.179, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 12 )
+
+[node name="score" type="Label" parent="menu"]
+margin_left = 379.0
+margin_top = 558.0
+margin_right = 579.0
+margin_bottom = 599.0
+custom_fonts/font = SubResource( 13 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_over" type="MeshInstance" parent="menu"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 3, 0 )
+visible = false
+cast_shadow = 0
+mesh = SubResource( 14 )
+material/0 = SubResource( 15 )
+
+[node name="pause1" type="MeshInstance" parent="menu"]
+transform = Transform( -8.74228e-09, -0.001, 0, 0.2, -4.37114e-11, 0, 0, 0, 1, -0.58, 3, 0 )
+visible = false
+mesh = SubResource( 16 )
+material/0 = SubResource( 17 )
+
+[node name="pause2" type="MeshInstance" parent="menu"]
+transform = Transform( -8.74228e-09, -1e-06, 0, 0.2, -4.37114e-14, 0, 0, 0, 1, 0.5, 3, 0 )
+visible = false
+mesh = SubResource( 16 )
+material/0 = SubResource( 18 )
